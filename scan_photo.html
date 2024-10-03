@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Microdot Web Server</title>
+    <meta name="robots" content="index,follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <h1>Hello ESP32-CAM</h1>
+    Display Image from ESP32-CAM
+    <div class="container">
+      <img src="image.jpg" id="uPyImage">
+	  <img src="boxed_image.jpg" id="scanImage">
+    </div>
+    <script>
+      var uPyImage = document.getElementById("uPyImage");
+		var scanImage = document.getElementById("scanImage");
+      // Function to refresh the image
+      function imageRefresh() {
+        var imageSrc = "image.jpg";
+		var scan_imageSrc = "boxed_image.jpg";
+        uPyImage.src = imageSrc + "?t=" + new Date().getTime();
+        console.log('Refreshed: ' + uPyImage.src);
+		scanImage.src = scan_imageSrc + "?t=" + new Date().getTime();
+        console.log('Refreshed: ' + scanImage.src);
+      }
+
+      // Refresh the image every 3 seconds
+      setInterval(imageRefresh, 2000);
+    </script>
+  </body>
+</html>
